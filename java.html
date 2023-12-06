@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website - Easy Tutorials</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="" class="logo">
+            <ul id="sidemenu">
+                <li><a href="index.html">index</a></li>
+                <li><a href="java.html">java</a></li>
+                <li><a href="api.html">api</a></li>
+                <i class="fas fa-times" onclick="closemenu()"></i>
+            </ul>
+            <i class="fas fa-bars" onclick="openmenu()"></i>
+        </nav>
+<!-- Page content -->
+<div class="w3-content w3-padding-64 w3-margin-top" style="max-width:1564px">
+
+<h1>The Document Object</h1>
+
+<hr>
+<h2>Just change A - Z</h2>
+<p id="demo">Hi</p>
+
+<hr>
+<h2>Click to change</h2>
+<p id="demo2">Hi</p>
+<button onclick="myFunction()">Click me</button>
+
+<hr>
+<h2>Calculate number</h2>
+<input id="numb">
+<button type="button" onclick="myFunction2()">Submit</button>
+<p id="demo3"></p>
+
+<!-- https://www.chartjs.org/docs/latest/getting-started/ -->
+<hr>
+<div>
+  <canvas id="myChart2" ></canvas>
+</div>
+
+<!-- https://www.w3schools.com/js/js_graphics_chartjs.asp -->
+<hr>
+<canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+
+<!-- End page content -->
+</div>
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+  //document.getElementById("demo").innerHTML = "Hello World";
+
+  function printAlphabets() {
+  // สร้างตัวแปรเพื่อเก็บตัวอักษร A-Z
+  const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  // ใช้ forEach เพื่อวนลูปผ่านทุกตัวอักษร
+  alphabets.split('').forEach((alphabet, index) => {
+    // ใช้ setTimeout เพื่อกำหนดระยะเวลาการแสดงผล
+    setTimeout(() => {
+      document.getElementById("demo").innerHTML = alphabet;
+      console.log(alphabet);
+    }, index * 1000); // 1000 milliseconds = 1 วินาที
+  });
+}
+printAlphabets();
+
+  function myFunction() {
+    document.getElementById("demo2").innerHTML = "Hello World";
+}
+
+  function myFunction2() {
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("numb").value;
+  // If x is Not a Number or less than one or greater than 10
+  let text;
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo3").innerHTML = text;
+}
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('myChart2');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  const xyValues = [
+    {x:50, y:7},
+    {x:60, y:8},
+    {x:70, y:8},
+    {x:80, y:9},
+    {x:90, y:9},
+    {x:100, y:9},
+    {x:110, y:10},
+    {x:120, y:11},
+    {x:130, y:14},
+    {x:140, y:14},
+    {x:150, y:15}
+  ];
+  
+  new Chart("myChart", {
+    type: "scatter",
+    data: {
+      datasets: [{
+        pointRadius: 4,
+        pointBackgroundColor: "rgb(0,0,255)",
+        data: xyValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      scales: {
+        xAxes: [{ticks: {min: 40, max:160}}],
+        yAxes: [{ticks: {min: 6, max:16}}],
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
